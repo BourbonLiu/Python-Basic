@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}moment{% endblock title %}
+
+{% block scripts %}
+{{ super() }}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{% endblock scripts %}
+
+{% block page_content %}
+{{ super() }}
+<p>
+    Date: <span id="date"></span>
+</p>
+<p>
+    From now: <span id="now"></span> 
+</p>
+
+<script>
+    {{momentjs_flask(start_time,"date").format('YYYY-MM-DD HH:mm:ss')}}
+    {{momentjs_flask(start_time,"now").fromNow()}}
+</script>
+{% endblock page_content %}

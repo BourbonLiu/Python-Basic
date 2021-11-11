@@ -1,0 +1,55 @@
+{% extends "parts/base.html" %}
+{% block title %}data-list{% endblock title %}
+
+
+{% block page_content %}
+{{ super() }}
+<table class="table table-light table-striped table-hover mt-5">
+    <thead>
+        <tr>
+            <th scope="col">business_id</th>
+            <th scope="col">name</th>
+            <th scope="col">address</th>
+            <th scope="col">city</th>
+            <th scope="col">state</th>
+            <th scope="col">postal_code</th>
+            <th scope="col">latitude</th>
+            <th scope="col">longtitude</th>
+            <th scope="col">stars</th>
+            <th scope="col">review_count</th>
+            <th scope="col">categories</th>
+            <th scope="col">hours</th>
+            <th scope="col">photo_id</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for col in outputs %}
+        <tr>
+            <th scope="row">{{ col['business_id'] }}</th>
+            <td>{{ col['name'] }}</td>
+            <td>{{ col['address'] }}</td>
+            <td>{{ col['city'] }}</td>
+            <td>{{ col['state'] }}</td>
+            <td>{{ col['postal_code'] }}</td>
+            <td>{{ col['latitude'] }}</td>
+            <td>{{ col['longtitude'] }}</td>
+            <td>{{ col['stars'] }}</td>
+            <td>{{ col['review_count'] }}</td>
+            <td>{{ col['categories'] }}</td>
+            <td>{{ col['hours'] }}</td>
+            <td>{{ col['photo_id'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<ul class="pagination  justify-content-center mt-5">
+    <!-- use querystring to control -->
+    <li class="page-item"><a class="page-link" href="/data-list?page={{ page-1 }}">Previous</a></li>
+    {% for p in range(1,total_pages+1 ) %}
+    <li class="page-item {{'active' if p==page else ''}}"><a class="page-link" href="/data-list?page={{p}}">{{ p }}</a>
+    </li>
+    {% endfor %}
+    <li class="page-item"><a class="page-link" href="/data-list?page={{ page+1 }}">Next</a></li>
+</ul>
+{% endblock page_content %}

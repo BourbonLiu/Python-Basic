@@ -1,0 +1,26 @@
+{% extends "parts/base.html" %}
+
+{% block title %}wtf-form{% endblock title %}
+
+{% block scripts %}
+{{ super() }}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+{{ moment.include_moment() }}
+{{ moment.locale('zh-tw') }}
+{% endblock scripts %}
+
+{% block page_content %}
+{{ super() }}
+
+<form action="/wtf_form" method="POST">
+    {{ form.name.label }} {{ form.name() }}
+    {{ form.password.label }} {{ form.password() }}
+    {{form.gender.label}}
+    {% for gender_selection in form.gender %}
+    {{ gender_selection(class="btn-check") }}
+    {{ gender_selection.label(class="btn btn-outline-success") }}
+    {% endfor %}
+    {{ form.submit(id="sub1", class="btn btn-primary") }}
+</form>
+
+{% endblock page_content %}

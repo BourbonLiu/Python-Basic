@@ -1,0 +1,16 @@
+{{url_for('index')}}
+<hr>
+{{url_for('user', name='allen')}}
+<hr>
+<!-- page=10是query string -->
+{{url_for('user', name='bourbon', page=10)}}     
+<hr>
+{{url_for('test_urlfor')}}
+<hr>
+<!-- _external=True會顯示完整url -->
+{{url_for('test_urlfor', _external=True)}}  
+<hr>
+<hr>
+{{url_for('test_urlfor', name='john', page=2, version=1)}}
+<hr>
+{{url_for('test_urlfor', _external=True, name='john', page=2, version=1)}}

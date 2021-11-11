@@ -1,0 +1,9 @@
+<h1>In import page</h1>
+
+<!-- import另一個HTML並呼叫其擁有的巨集 -->
+{% import 'macro.html' as macro %}
+{% if data_jinja %}
+{{macro.easy_row(data_jinja, "h3")}}
+{% else %}
+<h1> No data! </h1>
+{% endif %}
